@@ -1,16 +1,28 @@
 extends KinematicBody2D
 
+export var WALKING_SPEED = 100
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+enum S { WALKING, STANDING, BEING_BOOSTED }
 
+var state = S.STANDING
 
-# Called when the node enters the scene tree for the first time.
+func walk_right(_delta):
+	pass
+
+func stand(_delta):
+	pass
+
+func boost_upwards(_delta):
+	pass
+
+func _physics_process(delta):
+	match state:
+		S.WALKING:
+			walk_right(delta)
+		S.STANDING:
+			stand(delta)
+		S.BEING_BOOSTED:
+			boost_upwards(delta)
+
 func _ready():
 	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
